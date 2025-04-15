@@ -30,7 +30,7 @@ const mockProjects = [
     tags: ["LLMs", "LLM Evaluations"],
     github: null,
     demo: null,
-    paper: "/papers/llm-evaluation-framework.pdf",
+    paper: "https://drive.google.com/file/d/17rBnXXAm0vKKEukbYxNccgNBGuqIQHTl/view?usp=sharing",
     private: 1,
   },
   {
