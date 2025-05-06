@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent } from "@/components/ui/tabs"
-import { ExternalLink, FileText, Github, Loader2 } from "lucide-react"
+import { ExternalLink, FileText, Github, Loader2, Presentation } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -16,9 +16,11 @@ const mockProjects = [
     name: "MarketMind: Marketing AI Agent",
     description: "A text-to-SQL and generative AI backed project providing on-demand marketing analytics and strategy.",
     image: "/images/marketing-ai.png",
-    tags: ["AI Engineering", "Data Processing", "React"],
+    tags: ["Text-to-SQL", "AI Engineering"],
     github: null,
     demo: null,
+    paper: null,
+    presentation: null,
     private: 1,
   },
   {
@@ -28,50 +30,61 @@ const mockProjects = [
       "My capstone project, providing a comparative analysis of LLM evaluation frameworks across various metrics, with a focus on LLM-as-a-judge vs. NLP.",
     image: "/images/llm.jpeg",
     tags: ["LLMs", "LLM Evaluations"],
-    github: null,
-    demo: null,
+    github: "https://github.com/AfnanAbdul/LLM-eval-framework-comparison",
+    demo: "https://llm-evaluation-framework-leaderboard.vercel.app/",
     paper: "https://drive.google.com/file/d/17rBnXXAm0vKKEukbYxNccgNBGuqIQHTl/view?usp=sharing",
-    private: 1,
+    presentation: "https://drive.google.com/file/d/1gzxtCJxSvA1vDLUs2itpQuvB8cti4-hz/view?usp=sharing",
+    private: null,
   },
   {
     id: 3,
-    name: "UVA Building Image Classifier",
+    name: "Mood2Music: Multimodal Playlist Generation",
     description:
-      "A collection of deep learning models trained to correctly identify buildings on UVA's grounds, achieving accuracy rates of over 92%.",
-    image: "/images/uva.jpeg",
-    tags: ["Neural Networks", "Image Classification", "PyTorch"],
-    github: "https://github.com/johnhope829/uva-image-classifier",
+      "Deep learning project creating personalized music recommendations by integrating facial emotions, biometric data, and audio features to align songs with the user mood and activity.",
+    image: "/images/music-ai.png",
+    tags: ["Personalized AI", "Audio Processing", "Music Recommendation"],
+    github: "https://github.com/johnhope829/multimodal-playlist-generation",
     demo: null,
+    paper: "https://drive.google.com/file/d/1Cgjj8zLe9lYmj4VS_ypSyQ9zFAtw9vF7/view?usp=sharing",
+    presentation: "https://drive.google.com/file/d/1qri-TowCF3wMqUFpXB5gSmyZcg5_vbjq/view?usp=sharing",
     private: null,
   },
   {
     id: 4,
-    name: "House Pricing Kaggle Competition",
+    name: "DressCode: AI-Powered Fashion Assistant",
     description:
-      "Kaggle competition using advanced regression techniques including XGBoost, Support Vector Machines, and Random Forest. Scored in the top 1% of participants.",
-    image: "/images/housing.png",
-    tags: ["Machine Learning", "XGBoost", "SVM"],
-    github: "https://github.com/johnhope829/house_price_advanced_regression",
+      "AI fashion recommendation system, leveraging computer vision and multimodal AI to analyze wardrobe items and generate personalized outfit suggestions based on user preferences, trends, and occasion context",
+    image: "/images/fashion-ai.png",
+    tags: ["Personalized AI", "Retrieval-Augmented Generation"],
+    github: "https://github.com/argoel21/LLM-Virtual-Fashion-Stylist",
+    demo: null,
+    paper: "https://drive.google.com/file/d/1pUVpiYUMD1HnQIhdzaT6At064u88w7UJ/view?usp=sharing",
+    presentation: "https://drive.google.com/file/d/18vhNcf2nvVkOeNzgl7UrF9hl4ihnJKpD/view?usp=sharing",
     private: null,
   },
   {
     id: 5,
-    name: "Predicting Music Genre by Cover Art",
+    name: "UVA Building Image Classifier",
     description:
-      "Deep learning project leveraging convolutional neural networks (CNNs) to predict music genre by album cover.",
-    image: "/images/music.jpeg",
-    tags: ["CNNs", "Image Classification", "TensorFlow"],
-    github: "https://github.com/johnhope829/Predicting-Music-Genre-By-Album-Cover",
+      "A collection of deep learning models trained to correctly identify buildings on UVA's grounds, achieving accuracy rates of over 92%.",
+    image: "/images/uva.jpeg",
+    tags: ["Computer Vision", "Image Classification"],
+    github: "https://github.com/johnhope829/uva-image-classifier",
+    demo: null,
+    paper: null,
+    presentation: null,
     private: null,
   },
   {
     id: 6,
-    name: "Web Traffic Time Series Analysis & Forecasting",
+    name: "House Pricing Kaggle Competition",
     description:
-      "Created several seasonal forecasting models to predict average monthly page visits, achieving accuracy rates over 94%.",
-    image: "/images/forecast.png",
-    tags: ["Time Series", "Forecasting"],
-    github: "https://github.com/johnhope829/Web-Traffic-Time-Series-Analysis-Prediction",
+      "Kaggle competition using advanced regression techniques including XGBoost, Support Vector Machines, and Random Forest. Scored in the top 1% of participants.",
+    image: "/images/housing.png",
+    tags: ["Machine Learning"],
+    github: "https://github.com/johnhope829/house_price_advanced_regression",
+    paper: null,
+    presentation: null,
     private: null,
   },
 ]
@@ -152,7 +165,7 @@ export default function Projects() {
                           ))}
                         </div>
                       </CardContent>
-                      <CardFooter className="flex gap-2">
+                      <CardFooter className="flex flex-wrap gap-2">
                         {project.github && (
                           <Button asChild variant="outline" size="sm">
                             <Link href={project.github} target="_blank" rel="noopener noreferrer">
@@ -174,6 +187,14 @@ export default function Projects() {
                             <Link href={project.paper} target="_blank" rel="noopener noreferrer">
                               <FileText className="h-4 w-4 mr-2" />
                               Paper
+                            </Link>
+                          </Button>
+                        )}
+                        {project.presentation && (
+                          <Button asChild variant="outline" size="sm">
+                            <Link href={project.presentation} target="_blank" rel="noopener noreferrer">
+                              <Presentation className="h-4 w-4 mr-2" />
+                              Slides
                             </Link>
                           </Button>
                         )}
