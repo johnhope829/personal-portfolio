@@ -18,10 +18,10 @@ const mockProjects = [
     image: "/images/marketing-ai.png",
     tags: ["Text-to-SQL", "AI Engineering"],
     github: null,
-    demo: null,
+    demo: "https://drive.google.com/file/d/1bVOS3BmThNpXOg2c1BQsJ2QrdHHS_9o7/view?usp=sharing",
     paper: null,
     presentation: null,
-    private: 1,
+    private: null,
   },
   {
     id: 2,
